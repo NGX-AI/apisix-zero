@@ -44,3 +44,16 @@ jobs:
       - name: System print info
         run: |
           neofetch --stdout
+
+      - name: Install
+        run: |
+          ./utils/install-deps.sh
+
+      - name: Unit test
+        run: |
+          make prove
+
+      - name: Set up tmate session
+        if: ${{ always() }}
+        uses: mxschmitt/action-tmate@v3
+        timeout-minutes: 15
