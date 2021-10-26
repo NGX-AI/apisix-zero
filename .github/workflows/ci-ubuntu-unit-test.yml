@@ -53,7 +53,8 @@ jobs:
         run: |
           make prove
 
+      # Debug via SSH if previous steps failed
       - name: Set up tmate session
-        if: ${{ always() }}
+        if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
         timeout-minutes: 15
